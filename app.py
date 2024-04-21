@@ -11,10 +11,7 @@ st.markdown('##')
 
 fig, ax = plt.subplots()
 df = pd.read_csv('top_skills_job.csv')
-print(df.shape)
-jobs = ['store manager', 'store leader']
 jobs = df[df['job_title'].str.fullmatch(r'[a-z\s]+')]
-print(jobs.shape)
 
 st.sidebar.header('Lọc')
 selected_job = st.sidebar.selectbox('Chọn công việc', options = jobs)
@@ -27,7 +24,7 @@ def top_skills_chart():
     top_skills = eval(top_skills[0])
     skills, counts = zip(*top_skills)
     plt.barh(skills, counts)
-    plt.xlabel('')
+    plt.xlabel('Độ thường xuyên')
     plt.ylabel('Kỹ năng')
     plt.title(f'Top 5 Kỹ Năng được yêu cầu cho vị trí {selected_job}')
     ax.set_xticklabels([])
