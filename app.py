@@ -18,9 +18,7 @@ countries = df_top_jobs['search_country']
 selected_country = st.sidebar.selectbox('Chọn quốc gia', options=countries.unique())
 filtered_df_country = df_top_jobs[df_top_jobs['search_country'] == selected_country]
 
-jobs = ['store manager', 'store leader']
 jobs = df[df['job_title'].str.fullmatch(r'[a-z\s]+')]
-print(jobs.shape)
 selected_job = st.sidebar.selectbox('Chọn công việc', options=jobs)
 filtered_df = df[df['job_title'] == selected_job]
 
