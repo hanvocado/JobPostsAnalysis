@@ -24,7 +24,6 @@ filtered_df = df[df['job_title'] == selected_job]
 
 # Visualize function
 def top_skills_chart(selected_job, df):
-    print(selected_job)
     filtered_df = df[df['job_title'] == selected_job]
     top_skills = list(filtered_df['job_skills'])
     top_skills = eval(top_skills[0])
@@ -59,8 +58,14 @@ tab1, tab2 = st.tabs(["Việc làm", "Kĩ năng"])
 
 with tab1:
     st.subheader('Xu hướng việc làm')
-    top_jobs_chart(selected_country, filtered_df_country)
+    if (selected_country != None):
+        top_jobs_chart(selected_country, filtered_df_country)
+    else:
+        st.text("Vui lòng chọn quốc gia để xem.")
 
 with tab2:
     st.subheader('Xu hướng kỹ năng')
-    top_skills_chart(selected_job, df)
+    if (selected_job != None):
+        top_skills_chart(selected_job, df)
+    else:
+        st.text("Vui lòng chọn công việc để xem.")
